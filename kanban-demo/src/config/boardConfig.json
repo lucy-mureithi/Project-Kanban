@@ -1,0 +1,155 @@
+{
+  "version": "2.0.0",
+  "board": {
+    "stages": [
+      {
+        "id": "registration",
+        "name": "Registration",
+        "order": 0,
+        "color": "blue",
+        "cards": [
+          {
+            "id": "member-1",
+            "title": "Sarah Johnson",
+            "description": "New member - Completed registration form",
+            "membershipType": "Premium",
+            "joinDate": "2024-11-01",
+            "lastCheckIn": null,
+            "email": "sarah.j@email.com",
+            "phone": "+1-555-0123",
+            "labels": ["new", "premium"],
+            "status": "pending-activation",
+            "order": 0
+          },
+          {
+            "id": "member-2",
+            "title": "Michael Chen",
+            "description": "Awaiting payment confirmation",
+            "membershipType": "Basic",
+            "joinDate": "2024-11-03",
+            "lastCheckIn": null,
+            "email": "m.chen@email.com",
+            "phone": "+1-555-0124",
+            "labels": ["new", "basic"],
+            "status": "pending-payment",
+            "order": 1
+          }
+        ]
+      },
+      {
+        "id": "active",
+        "name": "Active",
+        "order": 1,
+        "color": "green",
+        "cards": [
+          {
+            "id": "member-3",
+            "title": "Emily Rodriguez",
+            "description": "Regular attendee - 3x/week average",
+            "membershipType": "Premium",
+            "joinDate": "2024-09-15",
+            "lastCheckIn": "2024-11-03",
+            "renewalDate": "2024-12-15",
+            "checkInCount": 36,
+            "email": "emily.r@email.com",
+            "phone": "+1-555-0125",
+            "labels": ["active", "premium", "regular"],
+            "status": "active",
+            "order": 0
+          },
+          {
+            "id": "member-4",
+            "title": "James Wilson",
+            "description": "Personal training client",
+            "membershipType": "PT Package",
+            "joinDate": "2024-08-20",
+            "lastCheckIn": "2024-11-02",
+            "renewalDate": "2024-12-20",
+            "checkInCount": 42,
+            "email": "j.wilson@email.com",
+            "phone": "+1-555-0126",
+            "labels": ["active", "pt", "premium"],
+            "status": "active",
+            "order": 1
+          },
+          {
+            "id": "member-5",
+            "title": "Aisha Patel",
+            "description": "Morning workout enthusiast",
+            "membershipType": "Basic",
+            "joinDate": "2024-10-01",
+            "lastCheckIn": "2024-11-04",
+            "renewalDate": "2025-01-01",
+            "checkInCount": 28,
+            "email": "aisha.p@email.com",
+            "phone": "+1-555-0127",
+            "labels": ["active", "basic", "morning"],
+            "status": "active",
+            "order": 2
+          }
+        ]
+      },
+      {
+        "id": "pending-renewal",
+        "name": "Pending Renewal",
+        "order": 2,
+        "color": "yellow",
+        "cards": [
+          {
+            "id": "member-6",
+            "title": "David Kim",
+            "description": "Membership expires in 5 days",
+            "membershipType": "Premium",
+            "joinDate": "2024-02-10",
+            "lastCheckIn": "2024-10-28",
+            "renewalDate": "2024-11-09",
+            "checkInCount": 89,
+            "email": "david.k@email.com",
+            "phone": "+1-555-0128",
+            "labels": ["renewal-due", "premium"],
+            "status": "renewal-pending",
+            "order": 0
+          },
+          {
+            "id": "member-7",
+            "title": "Lisa Anderson",
+            "description": "Renewal reminder sent",
+            "membershipType": "Basic",
+            "joinDate": "2024-05-15",
+            "lastCheckIn": "2024-10-30",
+            "renewalDate": "2024-11-15",
+            "checkInCount": 52,
+            "email": "lisa.a@email.com",
+            "phone": "+1-555-0129",
+            "labels": ["renewal-due", "basic"],
+            "status": "renewal-pending",
+            "order": 1
+          }
+        ]
+      },
+      {
+        "id": "inactive",
+        "name": "Inactive",
+        "order": 3,
+        "color": "red",
+        "cards": [
+          {
+            "id": "member-8",
+            "title": "Robert Taylor",
+            "description": "No check-in for 30+ days",
+            "membershipType": "Basic",
+            "joinDate": "2024-06-01",
+            "lastCheckIn": "2024-09-15",
+            "renewalDate": "2024-12-01",
+            "checkInCount": 24,
+            "email": "r.taylor@email.com",
+            "phone": "+1-555-0130",
+            "labels": ["inactive", "at-risk"],
+            "status": "inactive",
+            "order": 0
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -2,9 +2,11 @@ import { useState } from "react";
 import { Droppable } from "@hello-pangea/dnd";
 import Card from "./Card.jsx";
 
-export default function Column({ stage, index, onAddCard, onEditCard, onDeleteCard }) {
+export default function Column({ stage, index, onAddCard, onEditCard, onDeleteCard, onEditColumn }) {
   const [isAdding, setIsAdding] = useState(false);
   const [newCardTitle, setNewCardTitle] = useState("");
+  const [isEditingColumn, setIsEditingColumn] = useState(false);
+  const [editedColumnName, setEditedColumnName] = useState(stage.name);
 
   const handleAddCard = () => {
     if (newCardTitle.trim()) {
@@ -23,13 +25,67 @@ export default function Column({ stage, index, onAddCard, onEditCard, onDeleteCa
     }
   };
 
+  const handleColumnNameSave = () => {
+    if (editedColumnName.trim() && onEditColumn) {
+      onEditColumn(stage.id, editedColumnName.trim());
+      setIsEditingColumn(false);
+    }
+  };
+
+  const handleColumnNameCancel = () => {
+    setEditedColumnName(stage.name);
+    setIsEditingColumn(false);
+  };
+
+  const handleColumnKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleColumnNameSave();
+    } else if (e.key === 'Escape') {
+      handleColumnNameCancel();
+    }
+  };
+
   return (
     <div className="bg-gray-50 rounded-lg w-72 flex-shrink-0">
       {/* Column Header */}
       <div className="p-3">
         <div className="flex items-center justify-between">
-          <h2 className="font-semibold text-gray-700 text-sm">{stage.name}</h2>
-          <span className="text-xs text-gray-500 bg-gray-200 px-2 py-1 rounded">
+          {isEditingColumn ? (
+            <div className="flex items-center space-x-2 flex-1">
+              <input
+                type="text"
+                value={editedColumnName}
+                onChange={(e) => setEditedColumnName(e.target.value)}
+                onKeyDown={handleColumnKeyPress}
+                onBlur={handleColumnNameSave}
+                className="flex-1 px-2 py-1 text-sm font-semibold text-gray-700 border border-blue-500 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                autoFocus
+              />
+              <button
+                onClick={handleColumnNameSave}
+                className="text-green-600 hover:text-green-700 text-xs"
+                title="Save"
+              >
+                ✓
+              </button>
+              <button
+                onClick={handleColumnNameCancel}
+                className="text-red-600 hover:text-red-700 text-xs"
+                title="Cancel"
+              >
+                ✕
+              </button>
+            </div>
+          ) : (
+            <h2 
+              className="font-semibold text-gray-700 text-sm cursor-pointer hover:text-blue-600 transition-colors"
+              onClick={() => setIsEditingColumn(true)}
+              title="Click to edit column name"
+            >
+              {stage.name}
+            </h2>
+          )}
+          <span className="text-xs text-gray-500 bg-gray-200 px-2 py-1 rounded ml-2">
             {stage.cards.length}
           </span>
         </div>

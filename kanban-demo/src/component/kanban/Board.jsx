@@ -2,7 +2,7 @@
 import { DragDropContext, Droppable } from "@hello-pangea/dnd";
 import Column from "./Column.jsx";
 
-export default function Board({ board, onAddCard, onCardMove, onEditCard, onDeleteCard }) {
+export default function Board({ board, onAddCard, onCardMove, onEditCard, onDeleteCard, onEditColumn }) {
   const onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
 
@@ -37,6 +37,7 @@ export default function Board({ board, onAddCard, onCardMove, onEditCard, onDele
                   onAddCard={onAddCard}
                   onEditCard={onEditCard}
                   onDeleteCard={onDeleteCard}
+                  onEditColumn={onEditColumn}
                 />
               ))}
             {provided.placeholder}
